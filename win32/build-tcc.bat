@@ -117,10 +117,9 @@ goto :p3
 
 :config.h
 echo>..\config.h #define TCC_VERSION "%VERSION%"
-echo>> ..\config.h #ifdef TCC_TARGET_X86_64
-echo>> ..\config.h #define TCC_LIBTCC1 "libtcc1-64.a"
-echo>> ..\config.h #else
-echo>> ..\config.h #define TCC_LIBTCC1 "libtcc1-32.a"
+echo>> ..\config.h #define TCC_LIBTCC1 ""
+echo>> ..\config.h #ifndef CONFIG_TCC_PREDEFS
+echo>> ..\config.h # define CONFIG_TCC_PREDEFS 1
 echo>> ..\config.h #endif
 
 for %%f in (*tcc.exe *tcc.dll) do @del %%f
